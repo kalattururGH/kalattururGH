@@ -345,8 +345,10 @@ public class PatientHelperDAOOracle extends PatientAutogenHelperDAOOracle{
       + " join child_request cr on (c.child_id = cr.child_id and cr.status_cd = 1) "
       + " join resp_party r  on (r.resp_party_id = c.resp_party_id) "
       + " join new_address a on (r.address_id = a.address_id) "
-      + " join state st  on (a.p_state_id = st.state_id and st.state_id > 0) "
-      + " join country ct  on (a.p_country_id = ct.country_id and ct.country_id = 232) "
+      //+ " join state st  on (a.p_state_id = st.state_id and st.state_id > 0) "   Bug# MCIRDEV-38
+      //+ " join country ct  on (a.p_country_id = ct.country_id and ct.country_id = 232) "
+      + " join state st  on (a.state_id = st.state_id and st.state_id > 0) "
+      + " join country ct  on (a.country_id = ct.country_id and ct.country_id = 232) "
       + " left outer join phone p on (r.primary_phone_id = p.phone_id) "
       + " left outer join phone s on (r.secondary_phone_id = s.phone_id) "
       + " where cr.request_status_id= ? ";
