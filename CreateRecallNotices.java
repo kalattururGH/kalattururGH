@@ -305,8 +305,8 @@ public class CreateRecallNotices extends McirPage {
       final FlagCheckBox miProvOnly = new FlagCheckBox("p_prov_fl", new PropertyModel<String>(recallNotice, "p_prov_fl")); 
       dHHSOnlyContainer.add(miProvOnly);
       
-      //FlagCheckBox csvExtractFl = new FlagCheckBox("csv_extract_fl", new PropertyModel<String>(recallNotice, "csv_extract_fl")); 
-      //add(csvExtractFl);
+      FlagCheckBox csvExtractFl = new FlagCheckBox("csv_extract_fl", new PropertyModel<String>(recallNotice, "csv_extract_fl")); 
+      add(csvExtractFl);
       
       vacSeries = new DropDownChoice<Select>("p_vac_series", new PropertyModel(this, "vaccineSeries"), new ChoiceRenderer("name", "value"));
       vacSeries.setNullValid(true);
