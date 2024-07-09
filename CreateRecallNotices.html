@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--
+ $Author$
+ $Date$
+ $Revision$
+ $Id$
+-->
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></meta>
+ <title>Recall Outreach Notices</title>
+</head>
+<body>
+
+ <wicket:extend>
+
+  <div style="width:755px">
+   <form wicket:id="createRecallsForm">
+
+    <span wicket:id="feedbackPanel" style="position:relative">[Error Messages]</span>
+
+    <table width="100%" style="margin-bottom:10px">
+     <tr>
+      <td class="textLabel">Description: <input type="text" wicket:id="description" size="23" maxlength="40" /></td>
+      <!-- td wicket:id ="previewRptContainer" width="20%" align = "right"><a wicket:id="previewReport" href="">Preview Report</a></td-->
+      <td width="20%" align = "right"><a wicket:id="previewReport" href="">Preview Report</a></td>
+      </tr>
+    </table>
+
+    <div class="foursideborder" style="width:95%">
+     <table width="100%" align="center">
+      <tr class="headings">
+       <td colspan="2">Letter Type</td>
+      </tr>
+      <tr> 
+       <td class="radioText"><span wicket:id="p_letter_type_cd">
+           <input type="radio" wicket:id="comprehensive" />Comprehensive
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" wicket:id="simple" />Simple
+       </span></td>
+     </tr>
+    </table>
+   </div>   
+   
+     <div class="foursideborder" style="width:95%">
+      <table width="100%" align="center">
+       <tr class="headings">
+        <td colspan="3">Generate notices based on age of person</td>
+       </tr>
+        <tr>
+            <td class="textLabel">People of age at least 
+                <input type="text" wicket:id="p_from_child_age" size="4" maxlength="4" />&nbsp;&nbsp;
+                  but not yet of age 
+                 <input type="text" wicket:id="p_to_child_age" size="4" maxlength="4" />
+              </td>
+              
+               <td class="radioText">
+                <span wicket:id="age_uom">
+                 <input type="radio" wicket:id="months" /> <b>months</b>&nbsp;&nbsp; 
+                 <input type="radio" wicket:id="years" /> <b>years</b>&nbsp;&nbsp;
+                </span></td>
+                </tr>
+               </table>
+             </div>
+             
+    <div class="foursideborder" style="width:95%">
+     <table width="100%">
+      <tr class="headings">
+       <td colspan="6">Generate Notice based on options</td>
+        </tr>
+           <td class="textLabel"> <input type="checkbox" wicket:id="p_roster_fl" />Use only patient roster &nbsp;&nbsp;&nbsp;&nbsp;
+            <span wicket:id ="runTypeContainer"><input type="checkbox" wicket:id="p_run_type_cd" />Use only provider ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            Migrants<select wicket:id="p_migrant_fl">
+                   </select>&nbsp;&nbsp;&nbsp;&nbsp; 
+            <input type="checkbox" wicket:id="p_notif_method_cd" />Generate labels (Avery 5960)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <span wicket:id ="dHHSOnlyContainer">
+              <input type="checkbox" wicket:id="p_mi_fl" /> MI residence only &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="checkbox" wicket:id="p_prov_fl" />MI providers only &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            <input type="checkbox" wicket:id="csv_extract_fl" />Generate CSV extract file
+           </td>
+       </table>
+     </div>  
+    
+    <div class="foursideborder" style="width:95%">
+     <table width="100%">
+      <tr class="headings">
+       <td colspan="6">Generate notices based on vaccine series and dose within series</td>
+        </tr>
+        <tr>
+          <td class="textLabel">Vaccine Series
+           <select wicket:id="p_vac_series">
+           </select>
+          </td>
+          
+          <td wicket:id ="serAdviceContainer" class="textLabel">Type
+           <select wicket:id="p_series_advice_id">
+           </select>
+          </td>
+          
+          <td class="textLabel">Dose&nbsp;Number&nbsp;<input type="text" wicket:id="p_dose_number" size="4" maxlength="1" /></td>
+          
+         </tr>
+       </table>
+     </div>  
+          
+    <div class="foursideborder" style="width:95%">
+     <table width="100%">
+      <tr class="headings">
+       <td colspan="6">Generate notices based on geography</td>
+      </tr>
+      <tr>
+      
+  <td wicket:id ="regionContainer" class="textLabel">Region
+     <select wicket:id="region">
+      <option></option>
+     </select>
+    </td>
+    
+   <td wicket:id ="countyContainer" class="textLabel">County
+     <select wicket:id="county">
+      <option></option>
+     </select>
+    </td>
+       <td class="textLabel">ZIP Code <input type="text" wicket:id="p_zip_tx" size="23" maxlength="5" /></td>
+      </tr>
+     </table>
+    </div>
+
+  <div class="foursideborder" style="width:95%">
+   <table width="100%">
+      <tr class="headings">
+       <td colspan="4">Generate notices based on last administered shot date during the following period</td>
+      </tr>
+   <tr class="textLabel">
+    <td style="width:150px">Start Date
+     <span style="width:225px" wicket:id="p_shot_start_dt"></span>
+    </td>
+    <td style="width:150px">End Date
+     <span style="width:225px" wicket:id="p_shot_end_dt"></span>
+    </td>
+   </tr>
+   </table>
+  </div>
+  
+    <div class="foursideborder" style="width:95%">
+     <table width="100%">
+      <tr class="headings">
+       <td colspan="4">Provider Message <i>(maximum 260 characters)</i></td>
+      </tr>
+      <tr>
+       <td class="normalInputText" width="100%" colspan="2" align="center">
+        <textarea wicket:id="providerText" rows="8" cols="82" maxlength="260"></textarea>
+       </td>
+      </tr>
+      <tr>
+       <td class="textLabel" colspan="2"> Maximum people to be included in the result <input type ="text" wicket:id="p_child_count" value="300" size="8" maxlength="4" onKeyPress="ValidateNumericChar(event);" > </td>
+      </tr>
+     </table>
+    </div>
+    
+    <input type="hidden" wicket:id="confirmed" />
+    
+    <div class="threesideborder" style="width:95%">
+     <table width="100%">
+      <tr>
+       <td width="36%">&nbsp;</td>
+       <td width="14%" style="text-align:center"><input type="submit" wicket:id="submitButton" value="Submit" class="mediumButtons" /></td>
+       <td width="14%" style="text-align:center"><input type="button" wicket:id="cancelButton" value="Cancel" class="mediumButtons" /></td>
+       <td width="36%">&nbsp;</td>
+      </tr>
+     </table>
+    </div>
+
+   </form>
+  </div>
+
+ </wicket:extend>
+
+</body>
+</html>
